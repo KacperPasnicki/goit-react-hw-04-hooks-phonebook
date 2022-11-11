@@ -1,47 +1,40 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { nanoid } from 'nanoid'
 import PropTypes from 'prop-types';
 
 
-const INITIAL_STATE = {
-  id: [''],
-  name: '',
-  number: ''
-}
 
-export class Form extends React.Component {
-  static propTypes = { handleSubmit: PropTypes.func.isRequired };
-    state = {
-        ...INITIAL_STATE
-      };
- 
-      elementId = nanoid(8);
+
+export const Form = ({handleSubmit}) => {
+
+
+     let elementId = nanoid(8);
 
     
   
-    render() {
+    
      
       return (
-        <form className='nameForm' onSubmit={this.props.handleSubmit}
-        htmlFor={this.elementId}>
+        <form className='nameForm' onSubmit={handleSubmit}
+        htmlFor={elementId}>
           <label className='label'><span className='formName'>Name: </span>
           <input 
-          id={this.elementId}
-          value={this.name}
+          id={elementId}
+          
           type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             placeholder='text your name'
-            onChange={this.handleChange}
+            // onChange={handleChange}
           />
           </label>
           <label className='label'><span className='formName'>Number: </span>
           <input 
-          id={this.elementId}
-          value={this.number}
-          onChange={this.handleChange}
+          id={elementId}
+         
+          // onChange={handleChange}
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -51,22 +44,17 @@ export class Form extends React.Component {
           
           />
           </label>
-          <button className='addButton' type="submit">Search</button>
+          <button className='addButton' type="submit">Add Contact</button>
       
           
         </form>
       );
     }
-  }
+  
   
 
 
-// export const AddToBook = () => {
-// const [entries, setEntries] = useState([])
-// const addEntryToPhoneBook = (entry) => {
-//     setEntries(
-//       [...entries, entry].sort((a, b) =>
-//         a.name.toLowerCase() ) ? 1 : -1
-//       )
-//     ;
-//   }};
+    Form.propTypes = {
+      handleSubmit: PropTypes.func.isRequired,
+     
+        }

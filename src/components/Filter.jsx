@@ -3,13 +3,9 @@ import React from 'react';
 
 
 
-export class Filter extends React.Component {
-    static propTypes = {
-      handleChange: PropTypes.func.isRequired,
-      value: PropTypes.string.isRequired,
-    };
-  
-    render() {
+export const Filter =({handleChange}) => {
+
+     
       return (
         <label className='label'>
           Find contacts by Name
@@ -17,10 +13,13 @@ export class Filter extends React.Component {
             className='filterForm'
             type="text"
             name="filter"
-            value={this.props.value}
-            onChange={this.props.handleChange}
+           
+            onChange={handleChange}
           />
         </label>
       );
     }
-  }
+    Filter.propTypes = {
+      handleChange: PropTypes.func.isRequired,
+      
+        }
