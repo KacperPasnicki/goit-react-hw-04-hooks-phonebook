@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { nanoid } from 'nanoid'
 import PropTypes from 'prop-types';
 
@@ -8,12 +8,9 @@ import PropTypes from 'prop-types';
 export const Form = ({handleSubmit}) => {
 
 
-     let elementId = nanoid(8);
+  let elementId = nanoid(8);
 
     
-  
-    
-     
       return (
         <form className='nameForm' onSubmit={handleSubmit}
         htmlFor={elementId}>
@@ -33,7 +30,7 @@ export const Form = ({handleSubmit}) => {
           <label className='label'><span className='formName'>Number: </span>
           <input 
           id={elementId}
-         
+      
           // onChange={handleChange}
           type="tel"
           name="number"
